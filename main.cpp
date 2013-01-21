@@ -114,36 +114,9 @@ int main(int argc, char *argv[])
   /* Define the systemController */
   SystemController systemCtrl;
 
-//#define TEST
-#ifdef TEST
-  	  FontAccess font(font_helvB14);
-  	  SpecialFontTexture texture(&font);
-  	  texture.setString("Cupertino");
-            printf("height = %d\n", texture.height());
-  	  Lcd::instance()->draw_with(0, 5, &texture);
-  	  Lcd::instance()->draw_with(0, 24, &texture);
-
-
-    Display::instance()->refresh();
-
-  while(1);
-#endif
   /* Setting the first view in the Window stack */
   Window::instance()->pushViewController(&systemCtrl);
   Window::instance()->redraw();
-
-//	global_debug = "BLI";
-//  lcd->clear();
-//  FontAccess font1(font_helvB14);
-//  lcd->draw_with(10, 16, SpecialFontTexture(&font1).setString("Cupertino"));
-
-
-
-//
-//    //lcd->clear();
-//    //lcd->print_font();
-//  lcd->draw_with(50, 40, RegularFontTexture(0).setString(global_debug));
-//
 
 #ifdef SIMULATE
   Uint32 now, old_now = 0;
@@ -181,14 +154,8 @@ int main(int argc, char *argv[])
     uint8_t in_animation;
     if(redraw == true || (in_animation = Window::instance()->inAnimation()))
     {
-      printf("REDRAWING\n");
-      printf("redraw = %d, inAnimation = %d\n", redraw, in_animation);
       Window::instance()->redraw();
     }
-
-    //FontAccess font(font_helvB14);
-    //lcd->draw_with(10, 16, SpecialFontTexture(&font).setString(global_debug));
-		//Display::instance()->refresh();
   }
 
   return 0;
